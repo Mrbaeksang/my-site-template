@@ -33,16 +33,16 @@ export function Hero() {
   const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
   
   // 초기 데이터 - 배열 형태로 변경
-  const defaultSocialLinks = [{"name":"Instagram","icon":"instagram","url":"https://instagram.com/username"},{"name":"YouTube","icon":"youtube","url":"https://youtube.com/@username"}]
+  const defaultSocialLinks = [{"name":"Instagram","icon":"instagram","url":"https://instagram.com/qortkdgus95"},{"name":"YouTube","icon":"youtube","url":"https://youtube.com/@username"},{"name":"새 링크","icon":"globe","url":"https://devcom.kr"},{"name":"새 링크","icon":"mail","url":"qortkdgus95@gmail.com"}]
   
   const defaultInfo = {
     greeting: "안녕하세요,",
-    name: "당신의 이름",
-    title: "프론트엔드 개발자",
+    name: "백개발",
+    title: "개발자",
     description: "창의적인 아이디어로 웹 경험을 디자인합니다.",
-    profileImage: "",
+    profileImage: "/uploads/hero-profile-1758090597843.jpg",
     background: {"image":"","video":"","color":"","opacity":0.1},
-    projectButton: "프로젝트 보기"
+    projectButton: "My Project"
   }
 
   const [backgroundData, setBackgroundData] = useState(

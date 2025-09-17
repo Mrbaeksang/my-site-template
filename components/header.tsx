@@ -27,12 +27,12 @@ export function Header() {
   const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
   // 기본 데이터 (파일에는 문자열로 저장되지만 여기서는 컴포넌트로 변환)
   const defaultConfig = {
-    logo: "Portfolio",
+    logo: "백개발",
     logoImage: "",
     showNavBar: true,
     showThemeToggle: true,
-    items: [{"name":"홈","url":"#hero","icon":"Home","show":true},{"name":"소개","url":"#about","icon":"User","show":true},{"name":"프로젝트","url":"#projects","icon":"Briefcase","show":true},{"name":"연락처","url":"#contact","icon":"Mail","show":true},{"name":"갤러리","url":"#gallery","icon":"Camera","show":false},{"name":"블로그","url":"#blog","icon":"Book","show":false}],
-    siteTitle: "나의 포트폴리오"
+    items: [{"name":"Home","url":"#hero","icon":"Home","show":true},{"name":"About","url":"#about","icon":"User","show":true},{"name":"Project","url":"#projects","icon":"Briefcase","show":true},{"name":"Contact","url":"#contact","icon":"Mail","show":true},{"name":"갤러리","url":"#gallery","icon":"Camera","show":false},{"name":"블로그","url":"#blog","icon":"Book","show":false}],
+    siteTitle: "백개발의 사이트"
   }
   
   // defaultConfig의 아이콘을 컴포넌트로 변환한 상태로 초기화

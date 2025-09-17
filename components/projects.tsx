@@ -17,13 +17,8 @@ export function Projects() {
     subtitle: "프로젝트",
     initialDisplay: 6,
     loadMoreCount: 3,
-    background: {
-      image: "",
-      video: "",
-      color: "",
-      opacity: 0.1
-    },
-    projects: [] as Array<{ image: string; video?: string; title: string; description: string }>
+    background: {"image":"","video":"","color":"","opacity":0.1},
+    projects: [{"image":"/uploads/project-1758099905940-1758099905974.jpg","video":"","title":"인어공주와 파이리","description":"인어공주와 파이리입니다."},{"image":"/uploads/project-1758099924222-1758099924261.jpg","video":"","title":"달 탐사","description":"달 탐사 갔습니다."},{"image":"/uploads/project-1758099935697-1758099935725.jpg","video":"","title":"시계 디자인","description":"시계 디자인했습니다."},{"image":"/uploads/project-1758099948100-1758099948134.jpg","video":"","title":"용","description":"용"},{"image":"/uploads/project-1758099958628-1758099958660.jpg","video":"","title":"베이글 빵","description":"베이글 빵입니다."},{"image":"/uploads/project-1758099968818-1758099968852.jpg","video":"","title":"우주냥이","description":"우주냥이 입니다."},{"image":"/uploads/project-1758099979710-1758099979742.jpg","video":"","title":"크라켄","description":"크라켄과 배"}] as Array<{ image: string; video?: string; title: string; description: string }>
   }
 
   const [projectsInfo, setProjectsInfo] = useState(defaultInfo)
