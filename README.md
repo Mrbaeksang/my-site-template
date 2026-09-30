@@ -275,9 +275,9 @@ MIT License - 자유롭게 사용하세요!
 
 ## 👨‍💻 제작자
 
-**백상 (Mrbaeksang)**
+**백상현 · Sanghyeon Baek (@Mrbaeksang)**
 - YouTube: [@Mrbaeksang95](https://www.youtube.com/@Mrbaeksang95)
-- Website: [devcom.kr](https://devcom.kr/)
+- Website: [baeksang.dev](https://baeksang.dev/)
 - Email: qortkdgus95@gmail.com
 
 <br />
@@ -291,5 +291,5 @@ MIT License - 자유롭게 사용하세요!
 ---
 
 <div align="center">
-  Made with ❤️ by Mrbaeksang
+  Built by Sanghyeon Baek (백상현 · @Mrbaeksang)
 </div>
