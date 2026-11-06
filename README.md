@@ -1,295 +1,96 @@
-# 🎨 VibeCoding - 인라인 편집 포트폴리오 템플릿
+# my-site-template
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Next.js-15.0-black?style=for-the-badge&logo=next.js" />
-  <img src="https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript" />
-  <img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
-</div>
+코딩을 몰라도 화면에서 바로 글과 사진을 고쳐 내 포트폴리오 사이트를 만드는 Next.js 템플릿입니다.
 
-<br />
+[데모 보기](https://my-site-template.vercel.app) · [강의 영상](https://www.youtube.com/watch?v=U6zL8qittGk)
 
-> 🚀 **개발자가 아니어도 쉽게 수정 가능한 포트폴리오 템플릿**  
-> 인라인 편집 기능으로 실시간으로 내용을 수정하고, 이미지를 업로드하고, 레이아웃을 커스터마이징하세요.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Mrbaeksang/my-site-template)
 
-<br />
+![포트폴리오 템플릿 첫 화면](docs/preview.png)
 
-## 📺 강의 영상
+## 할 수 있는 것
 
-- [fork 후 편집 및 배포 강의](https://www.youtube.com/watch?v=U6zL8qittGk)
+- 내 PC에서 `Ctrl + E`로 편집 모드를 켜고 글, 사진, 영상, 배경, 메뉴를 수정
+- 저장 버튼으로 변경 내용을 프로젝트 파일에 반영
+- 소개, 프로젝트, 연락처 섹션과 연락처 QR 코드 제공
+- 다크 모드와 모바일 화면 지원
+- 링크 공유 미리보기, `robots.txt`, `sitemap.xml` 자동 생성
 
-<br />
+## 시작하기
 
-## ✨ 주요 기능
+준비물: [GitHub](https://github.com) 계정, [Vercel](https://vercel.com) 계정, [Node.js](https://nodejs.org) 20.9 이상, [Git](https://git-scm.com)
 
-### 🎯 **인라인 편집 시스템**
-- **Ctrl + E** 또는 **편집 버튼**으로 편집 모드 활성화
-- 텍스트, 이미지, 아이콘을 클릭해서 바로 수정
-- 변경사항 자동 저장 (localStorage)
-- 개발 모드에서 파일 시스템 저장 지원
+### 1. 내 저장소 만들고 배포하기
 
-### 📱 **완벽한 반응형 디자인**
-- 모바일, 태블릿, 데스크톱 최적화
-- 다크모드/라이트모드 지원
-- 부드러운 애니메이션과 트랜지션
+위의 **Deploy with Vercel** 버튼을 누르고 안내를 따릅니다. 내 GitHub에 저장소가 만들어지고 사이트가 배포됩니다.
 
-### 🎨 **커스터마이징 가능한 섹션**
-- **Hero**: 인삿말, 프로필 이미지, 소셜 링크
-- **About**: 경험, 스킬, 스토리, 취미
-- **Projects**: 프로젝트 갤러리 (이미지/비디오)
-- **Contact**: 연락처 정보, QR 코드, 문의 양식
+### 2. 내 PC에서 내용 고치기
 
-### 🔥 **스마트한 기능들**
-- 의미있는 파일명 자동 생성 (hero-profile, about-background 등)
-- 기존 파일 자동 삭제로 저장 공간 관리
-- QR 코드로 연락처 저장 (vCard 3.0)
-- 푸터 네비게이션 자동 동기화
-- SNS 공유 시 프로필 이미지 자동 썸네일 (Open Graph)
-
-<br />
-
-## 🚀 빠른 시작
-
-### 1. 설치
+`내-계정`과 `내-저장소`를 실제 이름으로 바꿔 터미널에서 실행합니다.
 
 ```bash
-# 저장소 클론
-git clone https://github.com/Mrbaeksang/my-site-template.git
-
-# 브랜치 확인 (기본 브랜치는 main입니다)
-cd my-site-template
-git branch
-
-# 만약 master 브랜치에 있다면 main으로 전환
-git checkout main
-
-# 또는 처음부터 main 브랜치 지정하여 클론
-git clone -b main https://github.com/Mrbaeksang/my-site-template.git
-cd my-site-template
-
-# 패키지 설치
+git clone https://github.com/내-계정/내-저장소.git
+cd 내-저장소
 npm install
-
-# 개발 서버 실행
 npm run dev
 ```
 
-### 2. 편집 모드 사용법
+1. 브라우저에서 http://localhost:3000 을 엽니다.
+2. `Ctrl + E`(Mac도 동일)를 눌러 편집 모드를 켭니다.
+3. 바꿀 항목에 마우스를 올려 수정합니다.
+4. 오른쪽 아래의 **저장** 버튼을 눌러 파일에 반영합니다.
 
-1. **편집 모드 켜기**
-   - 개발 환경: `Ctrl + E` 또는 우하단 ✏️ 버튼 클릭
-   - 편집 가능한 요소에 마우스를 올리면 편집 아이콘이 나타남
+업로드 제한은 이미지 5MB, 영상 20MB입니다.
 
-2. **텍스트 편집**
-   - 텍스트에 마우스 호버 → 편집 아이콘 클릭
-   - 내용 수정 → Enter 또는 ✓ 버튼으로 저장
-   - Esc 또는 × 버튼으로 취소
-
-3. **이미지/비디오 업로드**
-   - 미디어 요소 호버 → 설정 아이콘 클릭
-   - 파일 선택 또는 URL 입력
-   - 자동으로 최적화된 파일명으로 저장
-
-4. **배경 설정**
-   - 각 섹션 상단의 설정 아이콘 클릭
-   - 이미지/비디오/색상 중 선택
-   - 투명도 조절 가능
-
-<br />
-
-## 📁 프로젝트 구조
-
-```
-vibeCoding/
-├── app/
-│   ├── api/
-│   │   ├── delete-image/
-│   │   ├── og-image/
-│   │   ├── update-component/
-│   │   ├── update-field/
-│   │   ├── upload-image/
-│   │   └── upload-video/
-│   ├── globals.css
-│   ├── layout.tsx
-│   ├── page.tsx
-│   └── safelist.css
-├── components/
-│   ├── editable/
-│   │   ├── editable-background.tsx
-│   │   ├── editable-icon.tsx
-│   │   ├── editable-list.tsx
-│   │   ├── editable-media.tsx
-│   │   └── editable-text.tsx
-│   ├── ui/
-│   │   ├── button.tsx
-│   │   ├── card.tsx
-│   │   ├── toast.tsx
-│   │   ├── toaster.tsx
-│   │   └── use-toast.ts
-│   ├── about.tsx
-│   ├── contact.tsx
-│   ├── footer.tsx
-│   ├── global-save-button.tsx
-│   ├── header.tsx
-│   ├── hero.tsx
-│   ├── navbar.tsx
-│   ├── projects.tsx
-│   ├── save-field-button.tsx
-│   ├── save-to-file-button.tsx
-│   ├── site-title.tsx
-│   ├── theme-provider.tsx
-│   └── theme-toggle.tsx
-├── contexts/
-│   └── inline-editor-context.tsx
-├── hooks/
-│   └── use-toast.ts
-├── lib/
-│   ├── cleanup-storage.ts
-│   ├── constants.ts
-│   ├── metadata.ts
-│   ├── reset-images.ts
-│   └── utils.ts
-├── public/
-│   └── uploads/
-├── components.json
-├── package.json
-└── tsconfig.json
-```
-
-<br />
-
-## 🎨 커스터마이징
-
-### 색상 테마 변경
-
-`app/globals.css`에서 CSS 변수를 수정하세요:
-
-```css
-:root {
-  --primary: 221.2 83.2% 53.3%;      /* 메인 색상 */
-  --primary-foreground: 210 40% 98%; /* 메인 텍스트 색상 */
-  --background: 0 0% 100%;           /* 배경색 */
-  --foreground: 222.2 84% 4.9%;      /* 텍스트 색상 */
-}
-```
-
-### 섹션 추가/제거
-
-`app/page.tsx`에서 섹션을 관리하세요:
-
-```tsx
-export default function Page() {
-  return (
-    <>
-      <Header />      {/* 헤더 네비게이션 */}
-      <Hero />        {/* 히어로 섹션 */}
-      <About />       {/* 소개 섹션 */}
-      <Projects />    {/* 프로젝트 섹션 */}
-      <Contact />     {/* 연락처 섹션 */}
-      <Footer />      {/* 푸터 */}
-    </>
-  )
-}
-```
-
-### 기본값 설정
-
-각 컴포넌트의 `defaultInfo` 객체를 수정하세요:
-
-```typescript
-// components/hero.tsx
-const defaultInfo = {
-  greeting: "안녕하세요,",
-  name: "홍길동입니다",
-  title: "프론트엔드 개발자",
-  description: "창의적인 웹 경험을 만듭니다"
-}
-```
-
-<br />
-
-## 🛠 기술 스택
-
-- **Framework**: [Next.js 15](https://nextjs.org/) - React 프레임워크
-- **Language**: [TypeScript](https://www.typescriptlang.org/) - 타입 안정성
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) - 유틸리티 CSS
-- **Icons**: [Lucide React](https://lucide.dev/) - 아이콘 라이브러리
-- **Theme**: [next-themes](https://github.com/pacocoursey/next-themes) - 다크모드
-- **QR Code**: [qrcode](https://www.npmjs.com/package/qrcode) - QR 코드 생성
-
-<br />
-
-## 📝 환경 변수
-
-`.env.local` 파일을 생성하고 필요한 환경 변수를 설정하세요:
-
-```env
-# 개발 환경 설정
-NODE_ENV=development
-
-# 추가 설정 (선택사항)
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-```
-
-<br />
-
-## 🚢 배포
-
-### Vercel (추천)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/vibecoding)
-
-1. 위 버튼 클릭 또는 [Vercel](https://vercel.com)에서 직접 임포트
-2. 환경 변수 설정
-3. 배포 완료!
-
-### 다른 플랫폼
+### 3. 사이트에 반영하기
 
 ```bash
-# 프로덕션 빌드
-npm run build
-
-# 프로덕션 실행
-npm start
+git add .
+git commit -m "내 정보로 수정"
+git push
 ```
 
-<br />
+push하면 Vercel이 자동으로 다시 배포합니다.
 
-## 🤝 기여하기
+## 자주 묻는 질문
 
-기여는 언제나 환영입니다! 
+**배포된 사이트에서는 왜 편집이 안 되나요?**
+편집은 내 PC의 `npm run dev`에서만 동작합니다. 방문자가 사이트를 바꿀 수 없도록 배포 환경에서는 저장 기능이 꺼져 있습니다.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+**내 도메인을 연결했는데 공유 미리보기 주소가 달라요.**
+Vercel 환경 변수에 `NEXT_PUBLIC_SITE_URL=https://내-도메인`을 추가하고 다시 배포하세요. 지정하지 않으면 Vercel 프로덕션 주소를 사용합니다.
 
-<br />
+**색을 바꾸고 싶어요.**
+`app/globals.css`의 `@theme`과 `:root` 값을 수정하세요.
 
-## 📄 라이선스
+**이전에 이 템플릿을 받았어요. 업데이트해야 하나요?**
+네. 이전 버전의 Next.js 15.2.4에는 보안 권고가 있고, 편집 API 보호도 추가됐습니다. 이 저장소의 변경 사항을 반영하거나 `next`를 최신 버전으로 올리세요.
 
-MIT License - 자유롭게 사용하세요!
+**AI 도구로 고치고 싶어요.**
+구조와 주의 사항을 [`AGENTS.md`](AGENTS.md)에 정리해 두었습니다.
 
-<br />
+## 기술 스택
 
-## 👨‍💻 제작자
+Next.js 16, React 19, TypeScript, Tailwind CSS 4, Motion, Lucide, React Icons, next-themes, qrcode.react
 
-**백상현 · Sanghyeon Baek (@Mrbaeksang)**
+## 개발
+
+```bash
+npm run lint       # ESLint
+npm run typecheck  # 타입 검사
+npm test           # 테스트
+npm run build      # 프로덕션 빌드
+```
+
+버그와 제안은 [이슈](https://github.com/Mrbaeksang/my-site-template/issues)로 남겨 주세요.
+
+## 라이선스
+
+[MIT](LICENSE)
+
+## 만든 사람
+
+백상현 · Sanghyeon Baek ([@Mrbaeksang](https://github.com/Mrbaeksang))
+
 - YouTube: [@Mrbaeksang95](https://www.youtube.com/@Mrbaeksang95)
 - Website: [baeksang.dev](https://baeksang.dev/)
-- Email: qortkdgus95@gmail.com
-
-<br />
-
-## 🙏 감사의 말
-
-이 템플릿이 도움이 되었다면 ⭐️ 스타를 눌러주세요!
-
-<br />
-
----
-
-<div align="center">
-  Built by Sanghyeon Baek (백상현 · @Mrbaeksang)
-</div>
