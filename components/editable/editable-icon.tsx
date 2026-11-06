@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { useInlineEditor } from '@/contexts/inline-editor-context'
-import * as Icons from 'lucide-react'
+import * as LucideIcons from 'lucide-react'
 import { Edit2, Search } from 'lucide-react'
+import * as BrandIcons from '@/components/brand-icons'
+
+const Icons = { ...LucideIcons, ...BrandIcons }
 
 interface EditableIconProps {
   icon: string

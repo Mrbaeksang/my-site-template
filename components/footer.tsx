@@ -1,6 +1,7 @@
 "use client"
 
-import { ArrowUp, Heart, Youtube, Globe, Mail } from "lucide-react"
+import { ArrowUp, Heart, Globe, Mail } from "lucide-react"
+import { Youtube } from "@/components/brand-icons"
 import { useState, useEffect } from "react"
 import { EditableText } from "@/components/editable/editable-text"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
