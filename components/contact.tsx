@@ -8,6 +8,7 @@ import { Instagram, Youtube, Facebook, Twitter, Linkedin, Github, Twitch } from 
 import { Card } from "@/components/ui/card"
 import { EditableText } from "@/components/editable/editable-text"
 import { EditableBackground } from "@/components/editable/editable-background"
+import { QRCodeSVG } from "qrcode.react"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
 
 // 사용 가능한 소셜 아이콘 정의
@@ -177,12 +178,6 @@ export function Contact() {
   }
   
   const vCardString = generateVCard()
-
-  // URL 인코딩 (한글 깨짐 방지)
-  const encodedVCard = encodeURIComponent(vCardString.trim())
-  
-  // QR 코드 이미지 URL (외부 API 사용 - businessCard 프로젝트처럼)
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=${encodedVCard}`
 
   return (
     <EditableBackground
@@ -468,14 +463,12 @@ export function Contact() {
               
               {/* QR 코드 이미지 - 자동 업데이트! */}
               <div className="flex justify-center mb-6">
-                <Image 
-                  src={qrCodeUrl}
-                  alt="연락처 QR 코드"
-                  width={280}
-                  height={280}
-                  className="w-[280px] h-[280px]"
-                  style={{ imageRendering: 'crisp-edges' }}
-                  unoptimized
+                <QRCodeSVG
+                  value={vCardString.trim()}
+                  size={280}
+                  level="M"
+                  marginSize={2}
+                  title="연락처 QR 코드"
                 />
               </div>
               
