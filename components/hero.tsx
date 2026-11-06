@@ -269,6 +269,7 @@ export function Hero() {
         {/* 스크롤 인디케이터 */}
         <button
           onClick={scrollToAbout}
+          aria-label="소개 섹션으로 이동"
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
         >
           <ArrowDown className="h-6 w-6 text-muted-foreground" />

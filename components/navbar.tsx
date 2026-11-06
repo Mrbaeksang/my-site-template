@@ -139,6 +139,7 @@ export function NavBar({ items, className, logo, logoImage, isEditMode, onEditMe
           return (
             <button
               key={item.name}
+              aria-label={item.name}
               onClick={() => {
                 setActiveTab(item.name)
                 scrollToSection(item.url)

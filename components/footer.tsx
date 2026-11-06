@@ -219,14 +219,14 @@ export function Footer() {
             {footerInfo.showTemplateCredit && footerInfo.templateCreator && (
               <>
                 {footerInfo.showMadeWith && <span className="text-muted-foreground/50">•</span>}
-                <span className="text-xs text-muted-foreground/70">Template by Mrbaeksang</span>
+                <span className="text-xs text-muted-foreground">Template by Mrbaeksang</span>
                 <div className="flex items-center gap-1">
                   <a 
                     href={`mailto:${footerInfo.templateCreator.email}`}
                     className="inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-muted transition-colors"
                     aria-label="Email"
                   >
-                    <Mail className="h-3 w-3 text-muted-foreground/70 hover:text-muted-foreground" />
+                    <Mail className="h-3 w-3 text-muted-foreground hover:text-muted-foreground" />
                   </a>
                   <a 
                     href={footerInfo.templateCreator.youtube}
@@ -235,7 +235,7 @@ export function Footer() {
                     className="inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-muted transition-colors"
                     aria-label="YouTube"
                   >
-                    <Youtube className="h-3 w-3 text-muted-foreground/70 hover:text-muted-foreground" />
+                    <Youtube className="h-3 w-3 text-muted-foreground hover:text-muted-foreground" />
                   </a>
                   <a 
                     href={footerInfo.templateCreator.website}
@@ -244,7 +244,7 @@ export function Footer() {
                     className="inline-flex items-center justify-center w-6 h-6 rounded-full hover:bg-muted transition-colors"
                     aria-label="DevCom"
                   >
-                    <Globe className="h-3 w-3 text-muted-foreground/70 hover:text-muted-foreground" />
+                    <Globe className="h-3 w-3 text-muted-foreground hover:text-muted-foreground" />
                   </a>
                 </div>
               </>
