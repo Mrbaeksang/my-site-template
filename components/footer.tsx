@@ -5,6 +5,9 @@ import { Youtube } from "@/components/brand-icons"
 import { useState, useEffect } from "react"
 import { EditableText } from "@/components/editable/editable-text"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
+import { siteContent } from "@/lib/content"
+
+const defaultInfo = siteContent.footer.info
 
 export function Footer() {
   const { getData, saveData, isEditMode, saveToFile } = useInlineEditor()
@@ -22,24 +25,6 @@ export function Footer() {
   }
 
   // 기본 데이터
-  const defaultInfo = {
-    showFooter: true,
-    name: "당신의 이름",
-    description: "당신을 소개하는 짧은 문구를 작성해주세요. ",
-    showQuickLinks: true,
-    quickLinksTitle: "빠른 링크",
-    showContactInfo: true,
-    contactTitle: "연락처",
-    phone: "010-0000-0000",
-    email: "your-email@example.com",
-    location: "당신의 위치",
-    copyright: "",
-    showMadeWith: true,
-    madeWithLocation: "Mrbaeksang",
-    showTemplateCredit: true,
-    templateCreator: {"name":"백상","youtube":"https://www.youtube.com/@Mrbaeksang95/videos","website":"https://devcom.kr/","email":"qortkdgus95@gmail.com"},
-    showScrollTop: true
-  }
 
   const [footerInfo, setFooterInfo] = useState(defaultInfo)
 

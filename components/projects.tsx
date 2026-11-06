@@ -8,23 +8,12 @@ import { EditableMedia } from "@/components/editable/editable-media"
 import { EditableBackground } from "@/components/editable/editable-background"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
 import { COMMON_STYLES } from "@/lib/constants"
+import { siteContent } from "@/lib/content"
+
+const defaultInfo = siteContent.projects.info
 
 export function Projects() {
   const { getData, saveData, isEditMode, saveToFile } = useInlineEditor()
-  // 기본 데이터
-  const defaultInfo = {
-    title: "프로젝트",
-    subtitle: "프로젝트",
-    initialDisplay: 6,
-    loadMoreCount: 3,
-    background: {
-      image: "",
-      video: "",
-      color: "",
-      opacity: 0.1
-    },
-    projects: [] as Array<{ image: string; video?: string; title: string; description: string }>
-  }
 
   const [projectsInfo, setProjectsInfo] = useState(defaultInfo)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)

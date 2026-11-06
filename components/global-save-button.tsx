@@ -19,6 +19,7 @@ export function GlobalSaveButton() {
     
     const components = [
       { name: 'hero', section: 'Info' },
+      { name: 'hero', section: 'SocialLinks', dataKey: 'hero-social-links' },
       { name: 'about', section: 'Info' },
       { name: 'projects', section: 'Info' },
       { name: 'contact', section: 'Info' },

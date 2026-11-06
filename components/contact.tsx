@@ -9,6 +9,7 @@ import { EditableText } from "@/components/editable/editable-text"
 import { EditableBackground } from "@/components/editable/editable-background"
 import { QRCodeSVG } from "qrcode.react"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
+import { siteContent } from "@/lib/content"
 
 // 사용 가능한 소셜 아이콘 정의
 const AVAILABLE_ICONS = {
@@ -26,6 +27,9 @@ const AVAILABLE_ICONS = {
   mail: Mail
 }
 
+const defaultInfo = siteContent.contact.info
+const defaultSocialLinks = siteContent.contact.socialLinks
+
 export function Contact() {
   const { getData, saveData, isEditMode, saveToFile } = useInlineEditor()
   const [showProfileModal, setShowProfileModal] = useState(false)
@@ -34,30 +38,7 @@ export function Contact() {
   const [showIconPicker, setShowIconPicker] = useState<number | null>(null)
   
   // 기본 데이터
-  const defaultInfo = {
-    name: "당신의 이름",
-    title: "직책/직무",
-    company: "",
-    experience: "3년 경력",
-    phone: "010-0000-0000",
-    email: "your-email@example.com",
-    website: "",
-    location: "당신의 위치",
-    workTime: "평일 09:00 - 18:00",
-    responseTime: "24시간 이내 응답",
-    sectionTitle: "연락처",
-    sectionSubtitle: "프로젝트 문의나 협업 제안을 기다리고 있습니다. 편하신 방법으로 연락주세요!",
-    qrTitle: "QR 코드로 연락처 저장",
-    qrSubtitle: "스캔하면 연락처가 자동으로 저장됩니다",
-    bottomMessage: "함께 성장하는 파트너가 되겠습니다.",
-    bottomSubMessage: "고객님의 성공적인 프로젝트를 위해 최선을 다하겠습니다.",
-    qrContent: ["name","phone","email","location","website"],
-    profileEmoji: "👤",
-    background: {"image":"","video":"","color":"","opacity":0.1}
-  }
   
-  // 소셜 링크 기본값 (배열 형태로 변경)
-  const defaultSocialLinks: { name: string; icon: string; url: string }[] = []
   
   const [contactInfo, setContactInfo] = useState(defaultInfo)
   const [socialLinks, setSocialLinks] = useState(defaultSocialLinks)

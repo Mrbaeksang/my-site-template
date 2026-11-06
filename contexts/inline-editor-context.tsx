@@ -13,7 +13,6 @@ interface EditorContextType {
   hoveredElement: string | null
   setHoveredElement: (element: string | null) => void
   saveToFile: (component: string, section: string, data: unknown) => Promise<boolean>
-  saveFieldToFile: (component: string, field: string, value: unknown) => Promise<boolean>
 }
 
 const EditorContext = createContext<EditorContextType | undefined>(undefined)
@@ -55,7 +54,7 @@ export function InlineEditorProvider({ children }: { children: React.ReactNode }
     }
     
     try {
-      const response = await fetch('/api/update-component', {
+      const response = await fetch('/api/update-content', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,41 +83,6 @@ export function InlineEditorProvider({ children }: { children: React.ReactNode }
     }
   }
   
-  // 개별 필드 저장 (더 안전한 방식)
-  const saveFieldToFile = async (component: string, field: string, value: unknown): Promise<boolean> => {
-    if (!isDevelopment) {
-      console.warn('파일 저장은 개발 모드에서만 가능합니다')
-      return false
-    }
-    
-    try {
-      const response = await fetch('/api/update-field', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          component,
-          field,
-          value
-        })
-      })
-      
-      const result = await response.json()
-      
-      if (result.success) {
-        console.log(`✅ ${field} 필드가 성공적으로 저장되었습니다`)
-        return true
-      } else {
-        console.error('필드 저장 실패:', result.error)
-        return false
-      }
-    } catch (error) {
-      console.error('필드 저장 중 오류:', error)
-      return false
-    }
-  }
-
   // 컴포넌트 마운트 시 이미지 정리
   useEffect(() => {
     cleanupInvalidImages()
@@ -153,8 +117,7 @@ export function InlineEditorProvider({ children }: { children: React.ReactNode }
         getData,
         hoveredElement,
         setHoveredElement,
-        saveToFile,
-        saveFieldToFile
+        saveToFile
       }}
     >
       {children}
