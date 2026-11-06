@@ -1,8 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
+import { ImageResponse } from 'next/og'
+import { defaultConfig } from '@/lib/site-config'
 import fs from 'fs'
 import path from 'path'
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
     // uploads 폴더에서 hero-profile로 시작하는 이미지 찾기
     const uploadsDir = path.join(process.cwd(), 'public', 'uploads')
@@ -34,22 +36,26 @@ export async function GET(req: NextRequest) {
       }
     }
     
-    // 프로필 이미지가 없으면 기본 OG 이미지 생성 (단색 배경)
-    const svg = `
-      <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
-        <rect width="1200" height="630" fill="#3b82f6"/>
-        <text x="50%" y="50%" font-family="Pretendard, sans-serif" font-size="72" fill="white" text-anchor="middle" dominant-baseline="middle">
-          나의 포트폴리오
-        </text>
-      </svg>
-    `
-    
-    return new NextResponse(svg, {
-      headers: {
-        'Content-Type': 'image/svg+xml',
-        'Cache-Control': 'public, max-age=3600',
-      },
-    })
+    // 프로필 이미지가 없으면 사이트 제목으로 PNG 생성 (SNS 미리보기는 SVG를 지원하지 않는 경우가 많다)
+    return new ImageResponse(
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "#171717",
+          color: "#fafafa",
+          fontSize: 72,
+          padding: 80,
+          textAlign: "center",
+        }}
+      >
+        {defaultConfig.siteTitle}
+      </div>,
+      { width: 1200, height: 630, headers: { 'Cache-Control': 'public, max-age=3600' } },
+    )
   } catch (error) {
     console.error('OG 이미지 생성 실패:', error)
     return NextResponse.json({ error: 'Failed to generate OG image' }, { status: 500 })
