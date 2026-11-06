@@ -33,7 +33,7 @@ export function EditableBackground({
   const { isEditMode, saveData, getData } = useInlineEditor()
   const [showSettings, setShowSettings] = useState(false)
   const [backgroundType, setBackgroundType] = useState<'image' | 'video' | 'color'>(
-    video ? 'video' : 'image'  // 기본값을 항상 'image'로 설정
+    video ? 'video' : image ? 'image' : color ? 'color' : 'image'
   )
   const [tempImage, setTempImage] = useState(image)
   const [tempVideo, setTempVideo] = useState(video)
