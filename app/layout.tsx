@@ -7,6 +7,8 @@ import { defaultConfig } from "@/lib/site-config"
 import { getSiteUrl } from "@/lib/site-url"
 import "./globals.css"
 
+const FONT_CSS_URL =
+  "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
 const siteUrl = getSiteUrl()
 const { siteTitle, siteDescription } = defaultConfig
 
@@ -51,12 +53,16 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
-        <link 
-          rel="stylesheet" 
-          as="style" 
-          crossOrigin="anonymous"
-          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" 
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        {/* 글꼴 CSS가 첫 화면 표시를 막지 않도록 비동기로 불러온다. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var l=document.createElement("link");l.rel="stylesheet";l.crossOrigin="anonymous";l.href="${FONT_CSS_URL}";document.head.appendChild(l)})()`,
+          }}
         />
+        <noscript>
+          <link rel="stylesheet" crossOrigin="anonymous" href={FONT_CSS_URL} />
+        </noscript>
       </head>
       <body className="font-pretendard" suppressHydrationWarning>
         <ThemeProvider 
