@@ -136,7 +136,7 @@ export async function POST(request: NextRequest) {
       'projects': 'components/projects.tsx',
       'contact': 'components/contact.tsx',
       'footer': 'components/footer.tsx',
-      'header': 'components/header.tsx',
+      'header': 'lib/site-config.ts',
       'navbar': 'components/navbar.tsx'
     }
 
@@ -225,7 +225,8 @@ export async function POST(request: NextRequest) {
     content = beforeContent + newDefaultObject + afterContent
 
     // 파일 저장 전 검증
-    if (content.length < originalContent.length * 0.5) {
+    // site-config.ts는 파일 대부분이 설정 객체라 항목을 지우면 정상적으로 크게 줄어든다
+    if (component !== 'header' && content.length < originalContent.length * 0.5) {
       // 파일 크기가 너무 작아진 경우 오류로 처리
       console.error('⚠️ 파일 크기가 비정상적으로 줄어듦. 저장 취소.')
       return NextResponse.json(
@@ -238,42 +239,6 @@ export async function POST(request: NextRequest) {
     await fs.writeFile(filePath, content, 'utf-8')
 
     console.log(`✅ ${fileName} 파일이 업데이트되었습니다`)
-
-    // header 컴포넌트인 경우 layout.tsx의 metadata도 업데이트
-    if (component === 'header' && section === 'Config') {
-      try {
-        // layout.tsx 파일 읽기
-        const layoutPath = path.join(process.cwd(), 'app/layout.tsx')
-        let layoutContent = await fs.readFile(layoutPath, 'utf-8')
-
-        // import 문이 있는지 확인하고 없으면 추가
-        if (!layoutContent.includes('import { getMetadata }')) {
-          const importInsertPoint = layoutContent.indexOf('import "./globals.css"')
-          if (importInsertPoint !== -1) {
-            layoutContent = layoutContent.slice(0, importInsertPoint) +
-              'import { getMetadata } from "@/lib/metadata"\n' +
-              layoutContent.slice(importInsertPoint)
-          }
-        }
-
-        // metadataInfo 변수가 있는지 확인하고 없으면 추가
-        if (!layoutContent.includes('const metadataInfo = getMetadata()')) {
-          const insertPoint = layoutContent.indexOf('export const metadata')
-          if (insertPoint !== -1) {
-            layoutContent = layoutContent.slice(0, insertPoint) +
-              'const metadataInfo = getMetadata()\n\n' +
-              layoutContent.slice(insertPoint)
-          }
-        }
-
-        // layout.tsx 저장
-        await fs.writeFile(layoutPath, layoutContent, 'utf-8')
-        console.log('✅ layout.tsx도 함께 업데이트되었습니다')
-      } catch (layoutError) {
-        console.error('layout.tsx 업데이트 오류:', layoutError)
-        // layout.tsx 업데이트 실패해도 메인 작업은 성공으로 처리
-      }
-    }
 
     return NextResponse.json({
       success: true,

@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react"
-import { defaultConfig } from "@/components/header"
+import { defaultConfig } from "@/lib/site-config"
 
 export function SiteTitle() {
   useEffect(() => {
