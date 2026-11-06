@@ -40,7 +40,7 @@ export function Hero() {
   // 초기 데이터 - 배열 형태로 변경
   
 
-  const [backgroundData, setBackgroundData] = useState<{ image: string; video: string; color: string; opacity: number } | null>(null)
+  const [backgroundData, setBackgroundData] = useState<{ image: string; video: string; color: string; opacity: number } | null>(defaultInfo.background)
   const [heroInfo, setHeroInfo] = useState(defaultInfo)
   const [socialLinks, setSocialLinks] = useState(defaultSocialLinks)
   const [showSocialEditor, setShowSocialEditor] = useState(false)
@@ -404,6 +404,7 @@ export function Hero() {
                       backgroundVideo: backgroundData?.video || "",
                       backgroundOpacity: backgroundData?.opacity || 0.1,
                       projectButton: heroInfo.projectButton,
+                      background: backgroundData ?? defaultInfo.background,
                     }
                     
                     // heroInfo 파일에 저장
