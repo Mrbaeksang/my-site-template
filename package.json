@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "framer-motion": "^12.23.12",
     "lucide-react": "^1.70.0",
+    "motion": "^14.9.1",
     "next": "^16.4.5",
     "next-themes": "latest",
     "react": "^19.3.1",
