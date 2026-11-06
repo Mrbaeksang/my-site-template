@@ -25,6 +25,10 @@ const ICON_MAP = {
 }
 
 
+function setDocumentTitle(title: string) {
+  document.title = title
+}
+
 export function Header() {
   const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
   
@@ -92,7 +96,7 @@ export function Header() {
     // 사이트 제목과 디스크립션 업데이트
     if (key === 'siteTitle' && typeof value === 'string') {
       setSiteTitle(value)
-      document.title = value
+      setDocumentTitle(value)
       localStorage.setItem('portfolio-site-title', value)
     }
 
@@ -202,7 +206,7 @@ export function Header() {
                     value={siteTitle}
                     onChange={(e) => {
                       setSiteTitle(e.target.value)
-                      document.title = e.target.value
+                      setDocumentTitle(e.target.value)
                       updateNavConfig('siteTitle', e.target.value)
                     }}
                     className="w-full px-3 py-2 border rounded-lg bg-background"

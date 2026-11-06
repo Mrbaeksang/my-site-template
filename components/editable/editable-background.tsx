@@ -41,6 +41,26 @@ export function EditableBackground({
   const [tempOpacity, setTempOpacity] = useState(opacity)
   const [imageAspect, setImageAspect] = useState<string>('object-contain')
 
+  // 이미지 비율 감지 함수
+  const detectImageAspect = (src: string) => {
+    if (!src) return
+    
+    const img = new Image()
+    img.onload = () => {
+      const ratio = img.width / img.height
+      
+      // 비율에 따라 object-fit 스타일 결정
+      if (ratio >= 2.5) {
+        // 매우 넓은 이미지는 cover로 (배경으로 적합)
+        setImageAspect('object-cover')
+      } else {
+        // 일반적인 비율은 contain으로 (전체가 보이도록)
+        setImageAspect('object-contain')
+      }
+    }
+    img.src = src
+  }
+
   // 초기값 로드
   useEffect(() => {
     if (storageKey) {
@@ -62,26 +82,6 @@ export function EditableBackground({
       }
     }
   }, [storageKey])
-
-  // 이미지 비율 감지 함수
-  const detectImageAspect = (src: string) => {
-    if (!src) return
-    
-    const img = new Image()
-    img.onload = () => {
-      const ratio = img.width / img.height
-      
-      // 비율에 따라 object-fit 스타일 결정
-      if (ratio >= 2.5) {
-        // 매우 넓은 이미지는 cover로 (배경으로 적합)
-        setImageAspect('object-cover')
-      } else {
-        // 일반적인 비율은 contain으로 (전체가 보이도록)
-        setImageAspect('object-contain')
-      }
-    }
-    img.src = src
-  }
 
   // 이미지가 변경될 때마다 비율 감지
   useEffect(() => {
