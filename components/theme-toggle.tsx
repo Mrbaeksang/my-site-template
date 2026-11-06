@@ -23,7 +23,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   }
 
   return (
-    <div
+    <button
       className={cn(
         "flex w-16 h-8 p-1 rounded-full cursor-pointer transition-all duration-300",
         isDark 
@@ -31,9 +31,9 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           : "bg-white border border-zinc-200",
         className
       )}
+      type="button"
+      aria-label={isDark ? "라이트 모드로 전환" : "다크 모드로 전환"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      role="button"
-      tabIndex={0}
     >
       <div className="flex justify-between items-center w-full">
         <div
@@ -77,6 +77,6 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
           )}
         </div>
       </div>
-    </div>
+    </button>
   )
 }
