@@ -14,22 +14,22 @@
     "lucide-react": "^1.70.0",
     "motion": "^14.9.1",
     "next": "^16.4.5",
-    "next-themes": "latest",
+    "next-themes": "^0.4.6",
     "qrcode.react": "^4.2.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-icons": "^5.7.0",
-    "tailwind-merge": "^2.5.5"
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.1.9",
-    "@types/node": "^22.17.2",
+    "@tailwindcss/postcss": "^4.3.4",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "eslint": "^9.39.5",
     "eslint-config-next": "^16.4.5",
-    "postcss": "^8.5",
-    "tailwindcss": "^4.1.9",
-    "typescript": "^5"
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.4",
+    "typescript": "^6.0.3"
   }
 }
