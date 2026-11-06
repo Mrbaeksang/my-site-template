@@ -6,7 +6,8 @@
     "build": "next build",
     "dev": "next dev -H 127.0.0.1",
     "lint": "eslint .",
-    "start": "next start"
+    "start": "next start",
+    "test": "node --test \"lib/**/*.test.ts\""
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
