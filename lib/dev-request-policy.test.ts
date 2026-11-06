@@ -1,7 +1,10 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 import {
+  exceedsBodyLimit,
+  isPreviousUpload,
   isSafePathSegment,
+  isSafePurpose,
   isTrustedDevRequest,
   uploadFileName,
 } from "./dev-request-policy.ts"
@@ -35,4 +38,25 @@ test("purpose에 쓸 수 없는 경로 조각을 거부한다", () => {
   assert.equal(isSafePathSegment("../../escaped"), false)
   assert.equal(isSafePathSegment(".."), false)
   assert.equal(isSafePathSegment(""), false)
+})
+
+test("purpose는 영문, 숫자, 하이픈, 밑줄만 허용한다", () => {
+  assert.equal(isSafePurpose("hero-background-video"), true)
+  assert.equal(isSafePurpose("project_0"), true)
+  assert.equal(isSafePurpose("x:y"), false)
+  assert.equal(isSafePurpose("../x"), false)
+  assert.equal(isSafePurpose(""), false)
+})
+
+test("같은 purpose의 이전 파일만 찾는다", () => {
+  assert.equal(isPreviousUpload("hero-background-123.png", "hero-background"), true)
+  assert.equal(isPreviousUpload("hero-background-video-123.mp4", "hero-background"), false)
+  assert.equal(isPreviousUpload("hero-background-video-123.mp4", "hero-background-video"), true)
+  assert.equal(isPreviousUpload("hero-profile-123.png", "hero-background"), false)
+})
+
+test("Content-Length가 한도를 넘으면 거부한다", () => {
+  assert.equal(exceedsBodyLimit("101", 100), true)
+  assert.equal(exceedsBodyLimit("100", 100), false)
+  assert.equal(exceedsBodyLimit(null, 100), false)
 })

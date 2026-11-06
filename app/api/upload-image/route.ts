@@ -1,12 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rejectUntrustedDevRequest } from '@/lib/dev-api'
-import { isSafePathSegment, uploadFileName } from '@/lib/dev-request-policy'
+import { exceedsBodyLimit, isPreviousUpload, isSafePurpose, uploadFileName } from '@/lib/dev-request-policy'
 import fs from 'fs/promises'
 import path from 'path'
 
 export async function POST(request: NextRequest) {
   const rejected = rejectUntrustedDevRequest(request)
   if (rejected) return rejected
+
+  if (exceedsBodyLimit(request.headers.get('content-length'), (5 + 1) * 1024 * 1024)) {
+    return NextResponse.json(
+      { error: '파일 크기는 5MB 이하여야 합니다' },
+      { status: 413 }
+    )
+  }
 
   try {
     const formData = await request.formData()
@@ -21,7 +28,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!isSafePathSegment(purpose)) {
+    if (!isSafePurpose(purpose)) {
       return NextResponse.json(
         { error: '파일 용도(purpose) 값이 올바르지 않습니다' },
         { status: 400 }
@@ -75,7 +82,7 @@ export async function POST(request: NextRequest) {
     try {
       const files = await fs.readdir(publicPath)
       for (const existingFile of files) {
-        if (existingFile.startsWith(`${purpose}-`) && existingFile !== uniqueFileName) {
+        if (isPreviousUpload(existingFile, purpose) && existingFile !== uniqueFileName) {
           const fileToDelete = path.join(publicPath, existingFile)
           await fs.unlink(fileToDelete)
           console.log(`🗑️ 이전 ${purpose} 파일 삭제: ${existingFile}`)
