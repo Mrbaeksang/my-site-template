@@ -9,6 +9,7 @@ import { EditableText } from "@/components/editable/editable-text"
 import { EditableMedia } from "@/components/editable/editable-media"
 import { EditableBackground } from "@/components/editable/editable-background"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
+import { siteContent } from "@/lib/content"
 
 // 사용 가능한 아이콘 정의
 const AVAILABLE_ICONS = {
@@ -30,26 +31,16 @@ const AVAILABLE_ICONS = {
   arrowDown: ArrowDown,
 }
 
+const defaultInfo = siteContent.hero.info
+const defaultSocialLinks = siteContent.hero.socialLinks
+
 export function Hero() {
-  const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
+  const { getData, saveData, isEditMode, saveToFile } = useInlineEditor()
   
   // 초기 데이터 - 배열 형태로 변경
-  const defaultSocialLinks = [{"name":"Instagram","icon":"instagram","url":"https://instagram.com/username"},{"name":"YouTube","icon":"youtube","url":"https://youtube.com/@username"}]
   
-  const defaultInfo = {
-    greeting: "안녕하세요,",
-    name: "당신의 이름",
-    title: "프론트엔드 개발자",
-    description: "창의적인 아이디어로 웹 경험을 디자인합니다.",
-    profileImage: "",
-    backgroundImage: "",
-    backgroundVideo: "",
-    backgroundOpacity: 0.1,
-    projectButton: "프로젝트 보기",
-    background: {"image":"","video":"","color":"","opacity":0.1}
-  }
 
-  const [backgroundData, setBackgroundData] = useState<{ image: string; video: string; color: string; opacity: number } | null>(null)
+  const [backgroundData, setBackgroundData] = useState<{ image: string; video: string; color: string; opacity: number } | null>(defaultInfo.background)
   const [heroInfo, setHeroInfo] = useState(defaultInfo)
   const [socialLinks, setSocialLinks] = useState(defaultSocialLinks)
   const [showSocialEditor, setShowSocialEditor] = useState(false)
@@ -72,7 +63,7 @@ export function Hero() {
     if (savedBg) {
       setBackgroundData(savedBg)
     }
-  }, [isEditMode]) // isEditMode가 변경될 때마다 데이터 다시 로드
+  }, [isEditMode, getData]) // isEditMode가 변경될 때마다 데이터 다시 로드
 
   const updateHeroInfo = (key: string, value: string) => {
     // 업데이트
@@ -413,13 +404,14 @@ export function Hero() {
                       backgroundVideo: backgroundData?.video || "",
                       backgroundOpacity: backgroundData?.opacity || 0.1,
                       projectButton: heroInfo.projectButton,
+                      background: backgroundData ?? defaultInfo.background,
                     }
                     
                     // heroInfo 파일에 저장
                     const success1 = await saveToFile('hero', 'Info', allData)
                     
-                    // 소셜 링크도 파일에 저장 (defaultSocialLinks 필드 업데이트)
-                    const success2 = await saveFieldToFile('hero', 'defaultSocialLinks', socialLinks)
+                    // 소셜 링크도 파일에 저장
+                    const success2 = await saveToFile('hero', 'SocialLinks', socialLinks)
                     
                     if (success1 && success2) {
                       // localStorage도 업데이트

@@ -1,7 +1,6 @@
 import assert from "node:assert/strict"
 import { test } from "node:test"
 import {
-  isIdentifier,
   isSafePathSegment,
   isTrustedDevRequest,
   uploadFileName,
@@ -36,10 +35,4 @@ test("purpose에 쓸 수 없는 경로 조각을 거부한다", () => {
   assert.equal(isSafePathSegment("../../escaped"), false)
   assert.equal(isSafePathSegment(".."), false)
   assert.equal(isSafePathSegment(""), false)
-})
-
-test("정규식에 넣을 필드명은 식별자만 허용한다", () => {
-  assert.equal(isIdentifier("defaultSocialLinks"), true)
-  assert.equal(isIdentifier("a.*"), false)
-  assert.equal(isIdentifier(1), false)
 })

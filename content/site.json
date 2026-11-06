@@ -1,0 +1,216 @@
+{
+  "site": {
+    "logo": "포트폴리오",
+    "logoImage": "",
+    "showNavBar": true,
+    "showThemeToggle": true,
+    "items": [
+      {
+        "name": "Home",
+        "url": "#hero",
+        "icon": "Home",
+        "show": true
+      },
+      {
+        "name": "About",
+        "url": "#about",
+        "icon": "User",
+        "show": true
+      },
+      {
+        "name": "Projects",
+        "url": "#projects",
+        "icon": "Briefcase",
+        "show": true
+      },
+      {
+        "name": "Contact",
+        "url": "#contact",
+        "icon": "Mail",
+        "show": true
+      },
+      {
+        "name": "갤러리",
+        "url": "#gallery",
+        "icon": "Camera",
+        "show": false
+      },
+      {
+        "name": "블로그",
+        "url": "#blog",
+        "icon": "Book",
+        "show": false
+      }
+    ],
+    "siteTitle": "My portfolio",
+    "siteDescription": "창의적인 아이디어로 웹 경험을 디자인합니다!"
+  },
+  "hero": {
+    "info": {
+      "greeting": "안녕하세요,",
+      "name": "당신의 이름",
+      "title": "프론트엔드 개발자",
+      "description": "창의적인 아이디어로 웹 경험을 디자인합니다.",
+      "profileImage": "",
+      "backgroundImage": "",
+      "backgroundVideo": "",
+      "backgroundOpacity": 0.1,
+      "projectButton": "프로젝트 보기",
+      "background": {
+        "image": "",
+        "video": "",
+        "color": "",
+        "opacity": 0.1
+      }
+    },
+    "socialLinks": [
+      {
+        "name": "Instagram",
+        "icon": "instagram",
+        "url": "https://instagram.com/username"
+      },
+      {
+        "name": "YouTube",
+        "icon": "youtube",
+        "url": "https://youtube.com/@username"
+      }
+    ]
+  },
+  "about": {
+    "info": {
+      "title": "소개",
+      "subtitle": "당신의 전문성과 열정을 소개해주세요.",
+      "background": {
+        "image": "",
+        "video": "",
+        "color": "",
+        "opacity": 0.1
+      },
+      "experienceCards": [
+        {
+          "icon": "briefcase",
+          "title": "회사명",
+          "period": "2020 - 현재",
+          "description": "직무 및 역할"
+        },
+        {
+          "icon": "graduation",
+          "title": "학교명",
+          "period": "2016 - 2020",
+          "description": "전공 및 학위"
+        },
+        {
+          "icon": "award",
+          "title": "자격증/수상",
+          "period": "2021",
+          "description": "설명을 입력하세요"
+        }
+      ],
+      "skills": [
+        {
+          "icon": "code",
+          "title": "프론트엔드 개발",
+          "description": "React, TypeScript, Next.js를 활용한 모던 웹 개발"
+        },
+        {
+          "icon": "database",
+          "title": "백엔드 개발",
+          "description": "Node.js, Python, 데이터베이스 설계 및 구현"
+        },
+        {
+          "icon": "palette",
+          "title": "UI/UX 디자인",
+          "description": "사용자 중심의 인터페이스 디자인"
+        }
+      ],
+      "storyTitle": "나의 이야기",
+      "story": [
+        "저는 기술을 통해 사람들의 삶을 더 편리하고 의미 있게 만드는 일에 열정을 가지고 있습니다.",
+        "다양한 프로젝트를 통해 문제 해결 능력과 창의적인 사고를 키워왔으며, 팀원들과의 협업을 통해 함께 성장하는 가치를 배웠습니다.",
+        "앞으로도 지속적인 학습과 도전을 통해 더 나은 개발자가 되기 위해 노력하겠습니다."
+      ],
+      "storyImage": "",
+      "hobbies": [
+        "📚 독서",
+        "☕ 카페 투어",
+        "🎨 전시회 관람",
+        "✈️ 여행"
+      ]
+    }
+  },
+  "projects": {
+    "info": {
+      "title": "프로젝트",
+      "subtitle": "프로젝트",
+      "initialDisplay": 6,
+      "loadMoreCount": 3,
+      "background": {
+        "image": "",
+        "video": "",
+        "color": "",
+        "opacity": 0.1
+      },
+      "projects": []
+    }
+  },
+  "contact": {
+    "info": {
+      "name": "당신의 이름",
+      "title": "직책/직무",
+      "company": "",
+      "experience": "3년 경력",
+      "phone": "010-0000-0000",
+      "email": "your-email@example.com",
+      "website": "",
+      "location": "당신의 위치",
+      "workTime": "평일 09:00 - 18:00",
+      "responseTime": "24시간 이내 응답",
+      "sectionTitle": "연락처",
+      "sectionSubtitle": "프로젝트 문의나 협업 제안을 기다리고 있습니다. 편하신 방법으로 연락주세요!",
+      "qrTitle": "QR 코드로 연락처 저장",
+      "qrSubtitle": "스캔하면 연락처가 자동으로 저장됩니다",
+      "bottomMessage": "함께 성장하는 파트너가 되겠습니다.",
+      "bottomSubMessage": "고객님의 성공적인 프로젝트를 위해 최선을 다하겠습니다.",
+      "qrContent": [
+        "name",
+        "phone",
+        "email",
+        "location",
+        "website"
+      ],
+      "profileEmoji": "👤",
+      "background": {
+        "image": "",
+        "video": "",
+        "color": "",
+        "opacity": 0.1
+      }
+    },
+    "socialLinks": []
+  },
+  "footer": {
+    "info": {
+      "showFooter": true,
+      "name": "당신의 이름",
+      "description": "당신을 소개하는 짧은 문구를 작성해주세요. ",
+      "showQuickLinks": true,
+      "quickLinksTitle": "빠른 링크",
+      "showContactInfo": true,
+      "contactTitle": "연락처",
+      "phone": "010-0000-0000",
+      "email": "your-email@example.com",
+      "location": "당신의 위치",
+      "copyright": "",
+      "showMadeWith": true,
+      "madeWithLocation": "Mrbaeksang",
+      "showTemplateCredit": true,
+      "templateCreator": {
+        "name": "백상",
+        "youtube": "https://www.youtube.com/@Mrbaeksang95/videos",
+        "website": "https://devcom.kr/",
+        "email": "qortkdgus95@gmail.com"
+      },
+      "showScrollTop": true
+    }
+  }
+}
