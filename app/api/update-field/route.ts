@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
       'projects': 'components/projects.tsx',
       'contact': 'components/contact.tsx',
       'footer': 'components/footer.tsx',
-      'header': 'components/header.tsx',
+      'header': 'lib/site-config.ts',
       'navbar': 'components/navbar.tsx'
     }
     
