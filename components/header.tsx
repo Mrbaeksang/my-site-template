@@ -87,7 +87,7 @@ export function Header() {
         items: restoredItems
       })
     }
-  }, [])
+  }, [getData])
   
   const updateNavConfig = (key: string, value: string | boolean | typeof navConfig.items) => {
     const newConfig = { ...navConfig, [key]: value }

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useCallback, useContext, useState, useEffect } from 'react'
 import { cleanupInvalidImages } from '@/lib/cleanup-storage'
 import { GlobalSaveButton } from '@/components/global-save-button'
 
@@ -23,7 +23,7 @@ export function InlineEditorProvider({ children }: { children: React.ReactNode }
   const isDevelopment = process.env.NODE_ENV === 'development'
 
   // localStorage에서 데이터 불러오기
-  const getData = (key: string) => {
+  const getData = useCallback((key: string) => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem(`portfolio-${key}`)
       if (saved) {
@@ -35,7 +35,7 @@ export function InlineEditorProvider({ children }: { children: React.ReactNode }
       }
     }
     return null
-  }
+  }, [])
 
   // localStorage에 데이터 저장
   const saveData = (key: string, value: unknown) => {

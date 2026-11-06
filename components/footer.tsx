@@ -55,7 +55,7 @@ export function Footer() {
         setNavItems(visibleItems)
       }
     }
-  }, [isEditMode])
+  }, [isEditMode, getData])
 
   const updateFooterInfo = async (key: string, value: string | boolean) => {
     // Made with와 템플릿 크레딧 관련 필드는 수정 불가

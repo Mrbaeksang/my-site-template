@@ -122,7 +122,7 @@ export function About() {
     if (savedBg) {
       setBackgroundData(savedBg)
     }
-  }, [isEditMode]) // isEditMode가 변경될 때마다 데이터 다시 로드
+  }, [isEditMode, getData]) // isEditMode가 변경될 때마다 데이터 다시 로드
   
   const updateAboutInfo = (key: string, value: string | boolean | typeof aboutInfo.skills | typeof aboutInfo.experienceCards | typeof aboutInfo.story | typeof aboutInfo.hobbies | number) => {
     const newInfo = { ...aboutInfo, [key]: value }

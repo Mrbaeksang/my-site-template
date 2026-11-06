@@ -47,7 +47,7 @@ export function Projects() {
     if (savedBg) {
       setBackgroundData(savedBg)
     }
-  }, [isEditMode]) // isEditMode가 변경될 때마다 데이터 다시 로드
+  }, [isEditMode, getData]) // isEditMode가 변경될 때마다 데이터 다시 로드
   
   const updateProjectsInfo = async (key: string, value: string | number | boolean | typeof projectsInfo.projects) => {
     const newInfo = { ...projectsInfo, [key]: value }
