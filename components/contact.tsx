@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import { useState, useEffect } from "react"
-import Image from "next/image"
 import { Phone, Mail, MessageCircle, MapPin, Clock, Globe, Send, Edit2, X, Plus, MessageSquare, Save } from "lucide-react"
 import { Instagram, Youtube, Facebook, Twitter, Linkedin, Github, Twitch } from "@/components/brand-icons"
 import { Card } from "@/components/ui/card"

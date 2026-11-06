@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useInlineEditor } from '@/contexts/inline-editor-context'
 import { Upload, Image as ImageIcon, Video, Palette, Settings } from 'lucide-react'
 
@@ -90,26 +90,6 @@ export function EditableBackground({
     }
   }, [tempImage])
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        const result = reader.result as string
-        if (file.type.includes('video')) {
-          setTempVideo(result)
-          setBackgroundType('video')
-          handleSave('video', result)
-        } else {
-          setTempImage(result)
-          setBackgroundType('image')
-          detectImageAspect(result)
-          handleSave('image', result)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
 
   const handleSave = async (type?: string, value?: string) => {
     // 이전 파일 삭제를 위한 로직

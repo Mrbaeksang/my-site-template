@@ -61,12 +61,6 @@ export async function POST(request: NextRequest) {
       formattedValue = 'null'
     }
     
-    // const 변수 패턴 찾기 - 배열이나 객체를 포함한 전체 선언
-    const constPattern = new RegExp(
-      `(const\\s+${field}\\s*=\\s*)([\\s\\S]*?)(?=\\n\\s*(?:const|let|var|function|export|import|//|/\\*|\\n\\s*$))`,
-      'g'
-    )
-    
     // defaultInfo 객체 내부 필드 패턴
     const fieldPattern = new RegExp(
       `(^\\s*${field}:\\s*)([^,\\n}]+)(,?)`,

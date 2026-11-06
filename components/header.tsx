@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { useState, useEffect } from "react"
-import { Home, User, Briefcase, Mail, Settings, Heart, Star, Camera, Music, Book, Coffee, Rocket, Plus, X, type LucideIcon } from "lucide-react"
+import { Home, User, Briefcase, Mail, Settings, Heart, Star, Camera, Music, Book, Coffee, Rocket, type LucideIcon } from "lucide-react"
 import { NavBar } from "@/components/navbar"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { useInlineEditor } from "@/contexts/inline-editor-context"
@@ -30,7 +30,7 @@ function setDocumentTitle(title: string) {
 }
 
 export function Header() {
-  const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
+  const { getData, saveData, isEditMode, saveToFile } = useInlineEditor()
   
   // defaultConfig의 아이콘을 컴포넌트로 변환한 상태로 초기화
   const [navConfig, setNavConfig] = useState({
@@ -131,21 +131,7 @@ export function Header() {
     updateNavConfig('items', newItems)
   }
   
-  const addMenuItem = () => {
-    const newItems = [...navConfig.items]
-    newItems.push({
-      name: "새 메뉴",
-      url: "#new",
-      icon: Home,
-      show: true
-    })
-    updateNavConfig('items', newItems)
-  }
   
-  const removeMenuItem = (index: number) => {
-    const newItems = navConfig.items.filter((_, i) => i !== index)
-    updateNavConfig('items', newItems)
-  }
   
   // 실제로 표시할 메뉴만 필터링하고 아이콘 문자열을 컴포넌트로 변환
   const activeItems = navConfig.items

@@ -28,7 +28,7 @@ export function Projects() {
 
   const [projectsInfo, setProjectsInfo] = useState(defaultInfo)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
-  const [imageAspects, setImageAspects] = useState<{ [key: string]: string }>({})
+  const [, setImageAspects] = useState<{ [key: string]: string }>({})
   const [showProjectModal, setShowProjectModal] = useState(false)
   const [displayCount, setDisplayCount] = useState(defaultInfo.initialDisplay)
   const [showDisplaySettings, setShowDisplaySettings] = useState(false)
