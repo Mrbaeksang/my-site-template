@@ -7,7 +7,8 @@
     "dev": "next dev -H 127.0.0.1",
     "lint": "eslint .",
     "start": "next start",
-    "test": "node --test \"lib/**/*.test.ts\""
+    "test": "node --test \"lib/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "clsx": "^2.1.1",

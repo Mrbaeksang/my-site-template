@@ -17,7 +17,6 @@ export function cleanupInvalidImages() {
 
     try {
       const parsed = JSON.parse(data)
-      let modified = false
 
       // 이미지 필드 확인 및 정리
       const imageFields = ['profileImage', 'backgroundImage', 'image', 'avatar', 'photo']
@@ -29,7 +28,6 @@ export function cleanupInvalidImages() {
           img.onerror = () => {
             // 이미지 로드 실패 시 필드 초기화
             parsed[field] = ''
-            modified = true
             localStorage.setItem(key, JSON.stringify(parsed))
             console.log(`Cleaned invalid image from ${key}.${field}`)
           }
@@ -45,7 +43,6 @@ export function cleanupInvalidImages() {
               const img = new Image()
               img.onerror = () => {
                 item[field] = ''
-                modified = true
                 localStorage.setItem(key, JSON.stringify(parsed))
                 console.log(`Cleaned invalid image from ${key}[${index}].${field}`)
               }

@@ -470,7 +470,6 @@ export function About() {
             
             <div className="space-y-3">
               {aboutInfo.experienceCards?.map((card, index) => {
-                const Icon = AVAILABLE_ICONS[card.icon as keyof typeof AVAILABLE_ICONS] || Briefcase
                 return (
                   <div key={index} className="flex items-start gap-3 p-3 border rounded-lg bg-muted/30">
                     {/* 아이콘 선택 */}

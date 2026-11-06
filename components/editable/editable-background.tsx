@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useInlineEditor } from '@/contexts/inline-editor-context'
 import { Upload, Image as ImageIcon, Video, Palette, Settings } from 'lucide-react'
 
@@ -41,6 +41,26 @@ export function EditableBackground({
   const [tempOpacity, setTempOpacity] = useState(opacity)
   const [imageAspect, setImageAspect] = useState<string>('object-contain')
 
+  // 이미지 비율 감지 함수
+  const detectImageAspect = (src: string) => {
+    if (!src) return
+    
+    const img = new Image()
+    img.onload = () => {
+      const ratio = img.width / img.height
+      
+      // 비율에 따라 object-fit 스타일 결정
+      if (ratio >= 2.5) {
+        // 매우 넓은 이미지는 cover로 (배경으로 적합)
+        setImageAspect('object-cover')
+      } else {
+        // 일반적인 비율은 contain으로 (전체가 보이도록)
+        setImageAspect('object-contain')
+      }
+    }
+    img.src = src
+  }
+
   // 초기값 로드
   useEffect(() => {
     if (storageKey) {
@@ -63,26 +83,6 @@ export function EditableBackground({
     }
   }, [storageKey])
 
-  // 이미지 비율 감지 함수
-  const detectImageAspect = (src: string) => {
-    if (!src) return
-    
-    const img = new Image()
-    img.onload = () => {
-      const ratio = img.width / img.height
-      
-      // 비율에 따라 object-fit 스타일 결정
-      if (ratio >= 2.5) {
-        // 매우 넓은 이미지는 cover로 (배경으로 적합)
-        setImageAspect('object-cover')
-      } else {
-        // 일반적인 비율은 contain으로 (전체가 보이도록)
-        setImageAspect('object-contain')
-      }
-    }
-    img.src = src
-  }
-
   // 이미지가 변경될 때마다 비율 감지
   useEffect(() => {
     if (tempImage) {
@@ -90,26 +90,6 @@ export function EditableBackground({
     }
   }, [tempImage])
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        const result = reader.result as string
-        if (file.type.includes('video')) {
-          setTempVideo(result)
-          setBackgroundType('video')
-          handleSave('video', result)
-        } else {
-          setTempImage(result)
-          setBackgroundType('image')
-          detectImageAspect(result)
-          handleSave('image', result)
-        }
-      }
-      reader.readAsDataURL(file)
-    }
-  }
 
   const handleSave = async (type?: string, value?: string) => {
     // 이전 파일 삭제를 위한 로직
