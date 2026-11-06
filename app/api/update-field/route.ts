@@ -1,18 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { rejectUntrustedDevRequest } from '@/lib/dev-api'
+import { isIdentifier } from '@/lib/dev-request-policy'
 import fs from 'fs/promises'
 import path from 'path'
 
 export async function POST(request: NextRequest) {
-  // 🔒 개발 환경에서만 작동 (배포 시 자동 비활성화)
-  if (process.env.NODE_ENV !== 'development') {
-    return NextResponse.json(
-      { error: '개발 모드에서만 사용 가능합니다' },
-      { status: 403 }
-    )
-  }
+  const rejected = rejectUntrustedDevRequest(request)
+  if (rejected) return rejected
 
   try {
     const { component, field, value } = await request.json()
+
+    if (!isIdentifier(field)) {
+      return NextResponse.json(
+        { error: '필드 이름이 올바르지 않습니다' },
+        { status: 400 }
+      )
+    }
     
     // 📁 수정 가능한 컴포넌트 파일들
     const componentFiles: Record<string, string> = {
