@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { rejectUntrustedDevRequest } from '@/lib/dev-api'
+import { isSafePathSegment, uploadFileName } from '@/lib/dev-request-policy'
 import fs from 'fs/promises'
 import path from 'path'
 
 export async function POST(request: NextRequest) {
-  // 개발 환경에서만 작동
-  if (process.env.NODE_ENV !== 'development') {
-    return NextResponse.json(
-      { error: '개발 모드에서만 사용 가능합니다' },
-      { status: 403 }
-    )
-  }
+  const rejected = rejectUntrustedDevRequest(request)
+  if (rejected) return rejected
 
   try {
     const formData = await request.formData()
@@ -20,6 +17,13 @@ export async function POST(request: NextRequest) {
     if (!file) {
       return NextResponse.json(
         { error: '파일이 없습니다' },
+        { status: 400 }
+      )
+    }
+
+    if (!isSafePathSegment(purpose)) {
+      return NextResponse.json(
+        { error: '파일 용도(purpose) 값이 올바르지 않습니다' },
         { status: 400 }
       )
     }
@@ -56,9 +60,9 @@ export async function POST(request: NextRequest) {
     }
 
     // 기존 파일 삭제 (같은 purpose의 이전 파일들 삭제)
-    if (oldPath && oldPath.startsWith('/uploads/')) {
+    const oldFileName = uploadFileName(oldPath)
+    if (oldFileName) {
       try {
-        const oldFileName = oldPath.replace('/uploads/', '')
         const oldFilePath = path.join(publicPath, oldFileName)
         await fs.unlink(oldFilePath)
         console.log(`🗑️ 기존 비디오 삭제: ${oldPath}`)

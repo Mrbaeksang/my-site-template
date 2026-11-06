@@ -1,15 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { rejectUntrustedDevRequest } from '@/lib/dev-api'
+import { uploadFileName } from '@/lib/dev-request-policy'
 import fs from 'fs/promises'
 import path from 'path'
 
 export async function DELETE(request: NextRequest) {
-  // 개발 환경에서만 작동
-  if (process.env.NODE_ENV !== 'development') {
-    return NextResponse.json(
-      { error: '개발 모드에서만 사용 가능합니다' },
-      { status: 403 }
-    )
-  }
+  const rejected = rejectUntrustedDevRequest(request)
+  if (rejected) return rejected
 
   try {
     const { imagePath } = await request.json()
@@ -22,7 +19,8 @@ export async function DELETE(request: NextRequest) {
     }
 
     // 안전성 검사: uploads 폴더 내의 파일만 삭제 가능
-    if (!imagePath.startsWith('/uploads/')) {
+    const fileName = uploadFileName(imagePath)
+    if (!fileName) {
       return NextResponse.json(
         { error: 'uploads 폴더의 파일만 삭제 가능합니다' },
         { status: 400 }
@@ -30,7 +28,6 @@ export async function DELETE(request: NextRequest) {
     }
 
     // 파일 경로 생성
-    const fileName = imagePath.replace('/uploads/', '')
     const filePath = path.join(process.cwd(), 'public', 'uploads', fileName)
     
     // 파일 존재 확인
